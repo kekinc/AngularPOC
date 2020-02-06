@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { CommonService } from './services/common.service';
-
 import { RequestLogger } from './services/requestlogger.interceptor';
+import { Normalize } from './mormalize.pipe';
+
 
 
 
@@ -17,7 +18,8 @@ import { RequestLogger } from './services/requestlogger.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    Normalize
   ],
   imports: [
     BrowserModule,

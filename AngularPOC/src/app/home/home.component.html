@@ -10,9 +10,9 @@
         <tr *ngFor="let rate of rates">
             <td>{{ rate.label }}</td>
             <td>{{ rate.symbol }}</td>
-            <td>{{ rate.last }}</td>
-            <td>{{ rate.buy }}</td>
-            <td>{{ rate.sell }}</td>
+            <td>{{ rate.last | normalize }}</td>
+            <td>{{ rate.buy | normalize}}</td>
+            <td>{{ rate.sell | normalize}}</td>
         </tr>
     </tbody>
 </table>
