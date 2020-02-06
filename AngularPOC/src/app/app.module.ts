@@ -3,9 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { CommonService } from './services/common.service';
+
+import { RequestLogger } from './services/requestlogger.interceptor';
+
+
+
 
 
 
@@ -19,7 +24,13 @@ import { CommonService } from './services/common.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [CommonService],
+  providers: [
+    CommonService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestLogger,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

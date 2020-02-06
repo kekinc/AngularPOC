@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -7,9 +7,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CommonService {
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      // 'Access-Control-Allow-Origin': '*'
+    })
+  };
+
   constructor(private httpClient: HttpClient) { }
 
   public getCategories() {
-    return this.httpClient.get('localhost:3000/categories');
+    return this.httpClient.get('http://localhost:3000/categories');
+  }
+
+  public getRates() {
+    return this.httpClient.get('http://localhost:3000/rates');
   }
 }
