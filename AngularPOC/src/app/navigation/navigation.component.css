@@ -1,0 +1,9 @@
+.routeLnk {
+    cursor: pointer;
+    color: rgba(0,0,0,.9);
+}
+
+.activeLnk{
+    color: #333333;
+    font-weight: bold;
+}
