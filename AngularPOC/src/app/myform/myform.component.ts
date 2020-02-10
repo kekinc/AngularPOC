@@ -36,7 +36,7 @@ export class MyformComponent implements OnInit {
     } else {
       displayFlag = false;
     }
-    return { 'has-error':displayFlag}
+    return { 'has-error': displayFlag }
   }
 
 }

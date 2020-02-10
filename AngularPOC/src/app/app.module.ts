@@ -14,6 +14,7 @@ import { MyformComponent } from './myform/myform.component';
 import { AuthGuard } from './guards/authguard';
 import { RestrictedComponent } from './restricted/restricted.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveComponent } from './reactive/reactive.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'myform', component: MyformComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'rxjs', component: ReactiveComponent},
   {path: 'restricted', component: RestrictedComponent, canActivate: [AuthGuard]}
 ];
 
@@ -31,7 +33,8 @@ const routes: Routes = [
     Normalize,
     NavigationComponent,
     MyformComponent,
-    RestrictedComponent
+    RestrictedComponent,
+    ReactiveComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ const routes: Routes = [
     AuthGuard],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 
 }
