@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../services/common.service';
+import { mergeMap, map } from 'rxjs/operators';
 
 
 @Component({
@@ -12,7 +13,13 @@ export class ReactiveComponent implements OnInit {
   constructor(public commonService: CommonService) { }
 
   ngOnInit() {
-    this.commonService.getValues().subscribe((value) => {
+
+    const oddObservable = this.commonService.getOddValues();
+    this.commonService.getValues().pipe(mergeMap(value => {
+      return oddObservable.pipe(map(oddValue => {
+        return value + oddValue;
+      }))
+    })).subscribe(value => {
       console.log(value);
     });
   }

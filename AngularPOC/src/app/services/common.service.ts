@@ -24,15 +24,46 @@ export class CommonService {
     return this.httpClient.get('http://localhost:3000/rates');
   }
 
-  public getValues() {
+  public getValues(): Observable<number> {
     let counter = 0;
-    const observableIns = new Observable(obs => {
+    const observableIns = new Observable<number>(obs => {
       setInterval(() => {
-        obs.next(++ counter);
+        obs.next(++counter);
       }, 1000);
     });
 
     return observableIns;
   }
+
+  public getEvenValues(): Observable<number> {
+
+    let counter = 0;
+    const obsInstance = new Observable<number>(obs => {
+
+      setInterval(() => {
+        obs.next(counter);
+        counter = counter + 2;
+      }, 1000);
+    });
+
+    return obsInstance;
+
+
+  }
+
+  public getOddValues(): Observable<number> {
+    let counter = 1;
+
+    const obsInstance = new Observable<number>(obs => {
+      setInterval(() => {
+        obs.next(counter);
+        counter = counter + 2;
+      }, 1000);
+    });
+
+    return obsInstance;
+  }
+
+
 
 }
